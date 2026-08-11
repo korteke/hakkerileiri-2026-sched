@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hakkerileiri 2026 — Schedule</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <h1 id="event-name">Hakkerileiri 2026</h1>
+  <p id="event-meta" class="event-meta"></p>
+</header>
+
+<nav class="day-tabs" id="day-tabs" aria-label="Select day"></nav>
+
+<div class="filters" id="filters" aria-label="Filter by category"></div>
+
+<main id="schedule-root" class="schedule-root">
+  <p class="loading">Loading schedule…</p>
+</main>
+
+<footer class="site-footer">
+  <p>Sahanlahti · <span id="event-dates"></span></p>
+</footer>
+
+<script src="vendor/js-yaml.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+event:
+  name: "Hakkerileiri 2026"
+  venue: "Sahanlahti"
+  dates: "10.–14.8.2026"
+
+categories:
+  sahanlahti: {label: "Sahanlahti events", color: "#50fa7b"}
+  camp:       {label: "Camp events",       color: "#8be9fd"}
+  workshop:   {label: "Workshops",         color: "#bd93f9"}
+  talk:       {label: "Talks",             color: "#f1fa8c"}
+  info:       {label: "Info / social",     color: "#6272a4"}
+
+days:
+  - id: mon
+    label: "Monday 10.8"
+    date: "2026-08-10"
+    tracks: [main]
+  - id: tue
+    label: "Tuesday 11.8"
+    date: "2026-08-11"
+    tracks: [workshop, talk]
+  - id: wed
+    label: "Wednesday 12.8"
+    date: "2026-08-12"
+    tracks: [workshop, talk]
+  - id: thu
+    label: "Thursday 13.8"
+    date: "2026-08-13"
+    tracks: [workshop, talk]
+  - id: fri
+    label: "Friday 14.8"
+    date: "2026-08-14"
+    tracks: [main]
+
+rows:
+  - time: null
+    label: "Sleep"
+    cells:
+      mon: {main: {category: info, title: "zzz"}}
+      tue: {workshop: {category: info, title: "zzz"}, talk: {category: info, title: "zzz"}}
+      wed: {workshop: {category: info, title: "zzz"}, talk: {category: info, title: "zzz"}}
+      thu: {workshop: {category: info, title: "zzz"}, talk: {category: info, title: "zzz"}}
+      fri: {main: {category: info, title: "zzz"}}
+
+  - time: null
+    label: "Lunch"
+    cells:
+      mon: {main: {category: sahanlahti, title: "Lunch"}}
+      tue: {workshop: {category: sahanlahti, title: "Lunch"}, talk: {category: sahanlahti, title: "Lunch"}}
+      wed: {workshop: {category: sahanlahti, title: "Lunch"}, talk: {category: sahanlahti, title: "Lunch"}}
+      thu: {workshop: {category: sahanlahti, title: "Lunch"}, talk: {category: sahanlahti, title: "Lunch"}}
+      fri: {main: {category: sahanlahti, title: "Lunch"}}
+
+  - time: "12-13"
+    cells:
+      mon: {main: {category: info, title: "Loading camp...."}}
+      tue: {talk: {category: talk, title: "tk0 - Badge Hacking Introduction"}}
+      wed: {talk: {category: talk, title: "Dist - Introduction to the world of NFC"}}
+      thu: {talk: {category: talk, title: "Karo -  Application Security"}}
+      fri: {main: {category: sahanlahti, title: "Check-out at 12:00"}}
+
+  - time: "13-14"
+    cells:
+      tue: {talk: {category: talk, title: "hasanen - Modern AppSec"}}
+      wed: {talk: {category: talk, title: "Sanduuz - NFC Tech"}}
+      thu: {talk: {category: talk, title: "Heikki Stark - Authenticated or confused"}}
+
+  - time: "14-15"
+    cells:
+      tue: {talk: {category: talk, title: "Jussi - The Long Run: Thoughts on having a meaningful security analyst career"}}
+      wed:
+        workshop: {category: workshop, title: "DIst & Sanduuz - NFC workshop"}
+        talk: {category: talk, title: "Otter - International Hacker Camps and Hacker Culture"}
+      thu: {talk: {category: talk, title: "Jan - PQC in 2026"}}
+
+  - time: "15-16"
+    cells:
+      mon: {main: {category: sahanlahti, title: "Cabins available (Saimaavillat klo 16)"}}
+      tue: {talk: {category: talk, title: "Annenaattori & Jussi: Data & AI act ihmettelyä"}}
+      wed: {talk: {category: talk, title: "Tuukka Kivilahti - TBA"}}
+      thu: {workshop: {category: workshop, title: "Pizza Workshop - Acl & Kaisa (Villa Kaima)"}}
+      fri: {main: {category: info, title: "BYE"}}
+
+  - time: "16-17"
+    cells:
+      mon: {main: {category: camp, title: "Opening ceremony, Disobey stage (Elämysverstas)", note: "Start: 16:30"}}
+      tue: {workshop: {category: workshop, title: "Ken & Tomi - Cat Ear Workshop", note: "Orders have been done. Participants will get stuff at the workshop."}}
+      wed:
+        workshop: {category: workshop, title: "Satu/Neko - Hack AI"}
+        talk: {category: talk, title: "Paaris - ELSO101"}
+      thu: {workshop: {category: workshop, title: "Pizza Workshop - Acl & Kaisa (Villa Kaima)"}}
+
+  - time: "17-18"
+    cells:
+      mon: {main: {category: talk, title: "Dist - Hacker Mindset, Disobey Stage"}}
+      tue:
+        workshop: {category: workshop, title: "Ken & Tomi - Cat Ear Workshop", note: "Orders have been done. Participants will get stuff at the workshop."}
+        talk: {category: talk, title: "Lightning talks, 15 minutes of your thoughts"}
+      wed: {talk: {category: talk, title: "Lightning talks, 15 minutes of your thoughts"}}
+      thu: {main: {category: camp, title: "Closing ceremony, Disobey stage (Elämysverstas)"}}
+
+  - time: "18-20"
+    cells:
+      mon: {main: {category: info, title: "Brewing workshop / Sauna"}}
+      tue: {workshop: {category: info, title: "Networking"}, talk: {category: info, title: "Networking"}}
+      wed: {workshop: {category: info, title: "Networking"}, talk: {category: info, title: "Networking"}}
+      thu: {workshop: {category: camp, title: "sauna 18-22"}, talk: {category: info, title: "Networking"}}
+
+  - time: "20-22"
+    cells:
+      mon: {main: {category: camp, title: "Sauna 18-22"}}
+      tue: {workshop: {category: camp, title: "Sauna 18-22"}, talk: {category: camp, title: "Sauna 18-22"}}
+      wed: {workshop: {category: talk, title: "rundiable & whereisgiz - Conspiracy Theories"}}
+      thu: {workshop: {category: camp, title: "sauna 18-22"}}
