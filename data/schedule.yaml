@@ -42,7 +42,7 @@ rows:
       thu: {workshop: {category: info, title: "zzz"}, talk: {category: info, title: "zzz"}}
       fri: {main: {category: info, title: "zzz"}}
 
-  - time: null
+  - time: "11-12"
     label: "Lunch"
     cells:
       mon: {main: {category: sahanlahti, title: "Lunch"}}

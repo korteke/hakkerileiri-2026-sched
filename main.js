@@ -95,14 +95,37 @@
     });
   }
 
-  function makeEventCard(ev, hidden) {
+  function makeEventCard(ev, hidden, marker) {
     var card = el("div", "event-card cat-" + ev.category);
     if (hidden) card.classList.add("hidden-by-filter");
+    if (marker) card.classList.add("is-" + marker);
     card.appendChild(el("span", "title", ev.title));
     if (ev.note) {
       card.appendChild(el("span", "note", ev.note));
     }
     return card;
+  }
+
+  function findNextRowIndex(rows, day, now) {
+    if (!day.date) return -1;
+    var dayDate = new Date(day.date + "T00:00:00");
+    if (dayDate.getFullYear() !== now.getFullYear() ||
+        dayDate.getMonth() !== now.getMonth() ||
+        dayDate.getDate() !== now.getDate()) {
+      return -1;
+    }
+    var currentHour = now.getHours();
+    var bestIdx = -1, bestStart = Infinity;
+    rows.forEach(function (row, idx) {
+      if (!row.cells[day.id]) return;
+      var range = parseTimeRange(row.time);
+      if (!range) return;
+      if (range.startHour > currentHour && range.startHour < bestStart) {
+        bestStart = range.startHour;
+        bestIdx = idx;
+      }
+    });
+    return bestIdx;
   }
 
   function renderSchedule(data, now) {
@@ -112,8 +135,12 @@
     if (!day) return;
 
     var currentCardToScroll = null;
+    var hasCurrent = data.rows.some(function (row) {
+      return row.cells[day.id] && isCurrentRow(row.time, day, now);
+    });
+    var nextRowIndex = hasCurrent ? -1 : findNextRowIndex(data.rows, day, now);
 
-    data.rows.forEach(function (row) {
+    data.rows.forEach(function (row, rowIndex) {
       var dayCells = row.cells[day.id];
       if (!dayCells) return;
 
@@ -122,13 +149,14 @@
       rowEl.appendChild(el("div", "row-time", row.label || row.time || ""));
 
       var current = isCurrentRow(row.time, day, now);
+      var isNext = !hasCurrent && rowIndex === nextRowIndex;
 
       function addCard(cellData, cellEl) {
         if (!cellData) return;
         var hidden = state.hiddenCategories.has(cellData.category);
-        var card = makeEventCard(cellData, hidden);
-        if (current && !hidden) {
-          card.classList.add("is-current");
+        var marker = current ? "current" : (isNext ? "next" : null);
+        var card = makeEventCard(cellData, hidden, marker);
+        if (marker && !hidden) {
           currentCardToScroll = card;
         }
         cellEl.appendChild(card);
